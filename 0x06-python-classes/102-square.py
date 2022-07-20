@@ -5,32 +5,17 @@ This module implements a square class
 
 
 class Square:
-    """Square class with input validation"""
 
     def __init__(self, size=0, position=(0, 0)):
-        """
-        Args:
-        size (int): size of the square, must be greater than 0
-        """
         self.size = size
         self.position = position
 
     @property
     def size(self):
-        """
-        Returns:
-            size of square
-        """
         return self.__size
 
     @size.setter
     def size(self, size):
-        """
-        sets size of square to val
-
-        Args:
-            val (int): new size of the square, must be greater than 0
-        """
         if type(size) != int:
             raise TypeError("size must be an integer")
         if size < 0:
@@ -39,18 +24,10 @@ class Square:
 
     @property
     def position(self):
-        """
-        Returns:
-            position of square
-        """
         return self.__position
 
     @position.setter
     def position(self, position):
-        """
-        Args:
-            position (tuple): size 2 tuple representing position of the square
-        """
         if (not isinstance(position, tuple) or
                 len(position) != 2 or
                 not all(isinstance(num, int) for num in position) or
@@ -59,16 +36,9 @@ class Square:
         self.__position = position
 
     def area(self):
-        """
-        Returns:
-            Area of the square
-        """
         return self.__size**2
 
     def my_print(self):
-        """
-        prints square using '#'
-        """
         if self.size == 0:
             print()
             return
@@ -78,9 +48,6 @@ class Square:
             print("#" * self.size, end="\n")
 
     def __str__(self):
-        """
-        prints square
-        """
         if self.size == 0:
             return ""
         result = ""
@@ -91,25 +58,19 @@ class Square:
         return result[:-1]
         
     def __eq__(self, other):
-        """Define the == comparision to a Square."""
         return self.area() == other.area()
 
     def __ne__(self, other):
-        """Define the != comparison to a Square."""
         return self.area() != other.area()
 
     def __lt__(self, other):
-        """Define the < comparison to a Square."""
         return self.area() < other.area()
 
     def __le__(self, other):
-        """Define the <= comparison to a Square."""
         return self.area() <= other.area()
 
     def __gt__(self, other):
-        """Define the > comparison to a Square."""
         return self.area() > other.area()
 
     def __ge__(self, other):
-        """Define the >= compmarison to a Square."""
         return self.area() >= other.area() 
